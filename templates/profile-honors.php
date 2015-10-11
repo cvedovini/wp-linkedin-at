@@ -1,5 +1,5 @@
 <div id="honors" class="section">
-<div class="heading"><?php _e('Honors & Awards', 'wp-linkedin-at'); ?></div>
+<div class="heading"><?php _e('Honors & Awards', 'wp-linkedin'); ?></div>
 <?php foreach ($profile->honorsAwards->values as $v): ?>
 <div class="honor">
 	<div class="title"><strong><?php echo $v->name; ?></strong><?php

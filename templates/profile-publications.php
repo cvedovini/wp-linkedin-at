@@ -1,5 +1,5 @@
 <div id="publications" class="section">
-<div class="heading"><?php _e('Publications', 'wp-linkedin-at'); ?></div>
+<div class="heading"><?php _e('Publications', 'wp-linkedin'); ?></div>
 <?php foreach ($profile->publications->values as $v): ?>
 <div class="publication"><?php
 		$title = '<strong>'.$v->title.'</strong>';
@@ -11,7 +11,7 @@
     <?php endif; ?>
     <?php if (isset($v->authors->values)): ?>
     <div class="authors">
-		<div class="count"><?php printf(__('%d authors', 'wp-linkedin-at'), count($v->authors->values)); ?></div><?php
+		<div class="count"><?php printf(__('%d authors', 'wp-linkedin'), count($v->authors->values)); ?></div><?php
 		foreach ($v->authors->values as $m):
 			$p = isset($m->person) ? $m->person : null;
 			$pictureUrl = (isset($p->pictureUrl)) ? $p->pictureUrl : 'http://www.gravatar.com/avatar/?s=80&f=y&d=mm';
@@ -21,7 +21,7 @@
 			} elseif ($p->publicProfileUrl) {
 				$name = $p->firstName . ' ' . $p->lastName;
 			} else {
-				$name = __('Anonymous', 'wp-linkedin-at');
+				$name = __('Anonymous', 'wp-linkedin');
 			}
 
 			if (isset($p->headline)) $name .= ' - ' . $p->headline;

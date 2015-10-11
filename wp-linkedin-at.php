@@ -2,12 +2,11 @@
 /*
 Plugin Name: WP LinkedIn Advanced Templates
 Plugin URI: http://vdvn.me/pga
-Description: This plugin provides advanced templates for WP-LinkedIn
+Description: This plugin provides extende templates for WP-LinkedIn
 Author: Claude Vedovini
 Author URI: http://vdvn.me/
-Version: 1.1
+Version: 1.0
 Text Domain: wp-linkedin-at
-Domain Path: /languages
 
 # The code in this plugin is free software; you can redistribute the code aspects of
 # the plugin and/or modify the code under the terms of the GNU Lesser General
@@ -25,10 +24,9 @@ Domain Path: /languages
 # See the GNU lesser General Public License for more details.
 */
 
-define('WP_LINKEDIN_AT_PLUGIN_VERSION', '1.1');
-define('WP_LINKEDIN_AT_PLUGIN_NAME', 'WP LinkedIn Advanced Templates');
-define('WP_LINKEDIN_AT_DOWNLOAD_ID', 3683);
-define('WP_LINKEDIN_AT_PLUGIN_BASENAME', plugin_basename(__FILE__));
+define('WP_LINKEDIN_AT_VERSION', '1.0');
+
+include 'updater.php';
 
 add_action('plugins_loaded', array('WPLinkedInATPlugin', 'get_instance'));
 
@@ -45,22 +43,16 @@ class WPLinkedInATPlugin {
 	}
 
 	function __construct() {
+		add_action('init', array(&$this, 'init'));
+
 		// Make plugin available for translation
 		// Translations can be filed in the /languages/ directory
 		add_filter('load_textdomain_mofile', array(&$this, 'smarter_load_textdomain'), 10, 2);
 		load_plugin_textdomain('wp-linkedin-at', false, dirname(plugin_basename(__FILE__)) . '/languages/' );
-		add_action('init', array(&$this, 'init'));
 	}
 
 	function init() {
-		if (class_exists('VDVNPluginUpdater')) {
-			$this->updater = new VDVNPluginUpdater(__FILE__, WP_LINKEDIN_AT_PLUGIN_NAME,
-					WP_LINKEDIN_AT_PLUGIN_VERSION, WP_LINKEDIN_AT_DOWNLOAD_ID);
-		}
-
 		add_filter('linkedin_template', array(&$this, 'linkedin_template'));
-		add_action('admin_notices', array(&$this, 'admin_notices'));
-		add_action('network_admin_notices', array(&$this, 'admin_notices'));
 	}
 
 	function smarter_load_textdomain($mofile, $domain) {
@@ -86,18 +78,6 @@ class WPLinkedInATPlugin {
 			return $extended;
 		} else {
 			return $template;
-		}
-	}
-
-	function admin_notices() {
-		if (current_user_can('install_plugins')) {
-			if (!function_exists('wp_linkedin_connection')): ?>
-				<div class="error"><p><?php _e('The WP LinkedIn Advanced Templates plugin needs the WP LinkedIn plugin to be installed and activated.', 'wp-linkedin-at'); ?></p></div>
-			<?php elseif (version_compare(WP_LINKEDIN_VERSION, '2.3') < 0):
-				$format = __('The WP LinkedIn Advanced Templates plugin requires at least version %s of the WP-LinkedIn plugin, current installed version is %s', 'wp-linkedin-at');
-				$error = sprintf($format, '2.3', WP_LINKEDIN_VERSION); ?>
-				<div class="error"><p><?php echo $error; ?></p></div>
-			<?php endif;
 		}
 	}
 }

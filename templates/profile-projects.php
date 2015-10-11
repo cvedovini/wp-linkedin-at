@@ -1,14 +1,14 @@
 <div id="projects" class="section">
-<div class="heading"><?php _e('Projects', 'wp-linkedin-at'); ?></div>
+<div class="heading"><?php _e('Projects', 'wp-linkedin'); ?></div>
 <?php foreach ($profile->projects->values as $v): ?>
 <div class="project"><?php
 	$name = $v->name;
 	if (!empty($v->url)) $name = "<a href=\"{$v->url}\" target=\"_blank\">{$v->name}</a>";
 	?>
-	<div class="title"><strong><?php echo $name; ?></strong> (<?php echo $v->startDate->year; ?> - <?php echo isset($v->endDate) ? $v->endDate->year : __('Present', 'wp-linkedin-at'); ?>)</div>
+	<div class="title"><strong><?php echo $name; ?></strong> (<?php echo $v->startDate->year; ?> - <?php echo isset($v->endDate) ? $v->endDate->year : __('Present', 'wp-linkedin'); ?>)</div>
 	<?php if (isset($v->members->values) && is_array($v->members->values) && count($v->members->values) > 1): ?>
 	<div class="project-members">
-		<div class="count"><?php printf(__('%d team members', 'wp-linkedin-at'), count($v->members->values)); ?></div><?php
+		<div class="count"><?php printf(__('%d team members', 'wp-linkedin'), count($v->members->values)); ?></div><?php
 		foreach ($v->members->values as $m):
 			$p = isset($m->person) ? $m->person : null;
 			$pictureUrl = (isset($p->pictureUrl)) ? $p->pictureUrl : 'http://www.gravatar.com/avatar/?s=80&f=y&d=mm';
@@ -18,7 +18,7 @@
 			} elseif ($p->publicProfileUrl) {
 				$name = $p->firstName . ' ' . $p->lastName;
 			} else {
-				$name = __('Anonymous', 'wp-linkedin-at');
+				$name = __('Anonymous', 'wp-linkedin');
 			}
 
 			if (isset($p->headline)) $name .= ' - ' . $p->headline;

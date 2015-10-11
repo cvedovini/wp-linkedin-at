@@ -1,5 +1,5 @@
 <div id="languages" class="section">
-<div class="heading"><?php _e('Languages', 'wp-linkedin-at'); ?></div>
+<div class="heading"><?php _e('Languages', 'wp-linkedin'); ?></div>
 <ul>
 <?php foreach ($profile->languages->values as $v): ?>
 <li class="language"><?php echo $v->language->name; ?><?php

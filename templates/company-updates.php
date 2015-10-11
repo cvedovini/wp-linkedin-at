@@ -53,7 +53,7 @@ if (isset($update->updateContent->companyJobUpdate)) {
 <?php endforeach; ?>
 </div></div>
 <?php else: ?>
-<div class="linkedin"><p class="updates"><?php _e('No updates', 'wp-linkedin-at'); ?></p></div>
+<div class="linkedin"><p class="updates"><?php _e('No updates', 'wp-linkedin-co'); ?></p></div>
 <?php endif; ?>
 
 <?php if (LI_DEBUG): ?>
