@@ -7,7 +7,6 @@ Author: Claude Vedovini
 Author URI: http://vdvn.me/
 Version: 1.1
 Text Domain: wp-linkedin-at
-Domain Path: /languages
 
 # The code in this plugin is free software; you can redistribute the code aspects of
 # the plugin and/or modify the code under the terms of the GNU Lesser General
@@ -45,22 +44,22 @@ class WPLinkedInATPlugin {
 	}
 
 	function __construct() {
+		add_action('init', array(&$this, 'init'));
+
 		// Make plugin available for translation
 		// Translations can be filed in the /languages/ directory
 		add_filter('load_textdomain_mofile', array(&$this, 'smarter_load_textdomain'), 10, 2);
 		load_plugin_textdomain('wp-linkedin-at', false, dirname(plugin_basename(__FILE__)) . '/languages/' );
-		add_action('init', array(&$this, 'init'));
-	}
 
-	function init() {
 		if (class_exists('VDVNPluginUpdater')) {
 			$this->updater = new VDVNPluginUpdater(__FILE__, WP_LINKEDIN_AT_PLUGIN_NAME,
 					WP_LINKEDIN_AT_PLUGIN_VERSION, WP_LINKEDIN_AT_DOWNLOAD_ID);
 		}
+	}
 
+	function init() {
 		add_filter('linkedin_template', array(&$this, 'linkedin_template'));
 		add_action('admin_notices', array(&$this, 'admin_notices'));
-		add_action('network_admin_notices', array(&$this, 'admin_notices'));
 	}
 
 	function smarter_load_textdomain($mofile, $domain) {
@@ -90,7 +89,7 @@ class WPLinkedInATPlugin {
 	}
 
 	function admin_notices() {
-		if (current_user_can('install_plugins')) {
+		if (current_user_can('update_plugins')) {
 			if (!function_exists('wp_linkedin_connection')): ?>
 				<div class="error"><p><?php _e('The WP LinkedIn Advanced Templates plugin needs the WP LinkedIn plugin to be installed and activated.', 'wp-linkedin-at'); ?></p></div>
 			<?php elseif (version_compare(WP_LINKEDIN_VERSION, '2.3') < 0):
