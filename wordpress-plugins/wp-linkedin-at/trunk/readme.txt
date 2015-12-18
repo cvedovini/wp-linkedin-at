@@ -20,6 +20,10 @@ License purchase includes 1 year of product support and updates.
 
 [Follow this link for a demo of the advanced company page updates template.](http://vedovini.net/company-profile)
 
+**ATTN**: This plugin does not give you access to full profiles. It merely enables
+you to display all the profile data once you have full access. To obtain full access
+to profiles you will first need to apply to one of [LinkedIn partners programs](https://developer.linkedin.com/partner-programs).
+
 
 == Installation ==
 
