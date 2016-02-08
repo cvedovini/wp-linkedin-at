@@ -3,8 +3,8 @@ Author: Claude Vedovini
 Contributors: cvedovini
 Donate link: http://paypal.me/vdvn
 Tags: linkedin,resume,recommendations,profile,network updates,templates
-Tested up to: 4.4
-Stable tag: 1.1
+Tested up to: 4.4.2
+Stable tag: 1.1.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -37,6 +37,9 @@ method](http://codex.wordpress.org/Managing_Plugins#Installing_Plugins):
 
 
 == Changelog ==
+
+= Version 1.1.1 =
+- Forcing network activation on multi-site installs
 
 = Version 1.1 =
 - Improved license management

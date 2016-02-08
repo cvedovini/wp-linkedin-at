@@ -5,9 +5,10 @@ Plugin URI: http://vdvn.me/pga
 Description: This plugin provides advanced templates for WP-LinkedIn
 Author: Claude Vedovini
 Author URI: http://vdvn.me/
-Version: 1.1
+Version: 1.1.1
 Text Domain: wp-linkedin-at
 Domain Path: /languages
+Network: True
 
 # The code in this plugin is free software; you can redistribute the code aspects of
 # the plugin and/or modify the code under the terms of the GNU Lesser General
@@ -25,7 +26,7 @@ Domain Path: /languages
 # See the GNU lesser General Public License for more details.
 */
 
-define('WP_LINKEDIN_AT_PLUGIN_VERSION', '1.1');
+define('WP_LINKEDIN_AT_PLUGIN_VERSION', '1.1.1');
 define('WP_LINKEDIN_AT_PLUGIN_NAME', 'WP LinkedIn Advanced Templates');
 define('WP_LINKEDIN_AT_DOWNLOAD_ID', 3683);
 define('WP_LINKEDIN_AT_PLUGIN_BASENAME', plugin_basename(__FILE__));
