@@ -30,7 +30,7 @@ to profiles you will first need to apply to one of [LinkedIn partners programs](
 This plugin follows the [standard WordPress installation
 method](http://codex.wordpress.org/Managing_Plugins#Installing_Plugins):
 
-1. Upload the `wp-linkedin-at` folder to the `/wp-content/plugins/` directory
+1. Upload the *wp-linkedin-at* folder to the */wp-content/plugins/* directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Go to the plugin's settings page, enter your license key in the 'extensions'
 	tab and press the 'Save Changes' button
