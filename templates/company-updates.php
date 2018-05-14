@@ -23,21 +23,31 @@ if (isset($update->updateContent->companyStatusUpdate)) {
 
 		if (isset($share->content)) {
 			echo '<div class="share-content">';
-			if (isset($share->content->thumbnailUrl)) {
-				$thumbnail = '<img src="' . $share->content->thumbnailUrl . '" class="alignleft" width="80" />';
-			}
-
+				
 			if (isset($share->content->title)) $title = $share->content->title;
+			
+			if (isset($title) || isset($share->content->description)) {
+				if (isset($share->content->thumbnailUrl)) {
+					$thumbnail = '<img src="' . $share->content->thumbnailUrl . '" class="alignleft thumbnail"/>';
+				}
+			} elseif (isset($share->content->eyebrowUrl)) {
+				$thumbnail = '<img src="' . $share->content->eyebrowUrl . '" class="eyebrow"/>';
+			}
+				
 			if (isset($share->content->shortenedUrl)) {
 				if (isset($title)) $title = '<a href="' . $share->content->shortenedUrl . '">' . $title . '</a>';
 				if (isset($thumbnail)) $thumbnail = '<a href="' . $share->content->shortenedUrl . '">' . $thumbnail . '</a>';
 			}
 
 			if (isset($thumbnail)) echo $thumbnail;
-			echo '<div class="share-prop">';
-			if (isset($title)) echo '<div class="share-title">' . $title . '</div>';
-			if (isset($share->content->description)) echo wpautop($share->content->description);
-			echo '</div></div>';
+			if (isset($title) || isset($share->content->description)) {
+				echo '<div class="share-prop">';
+				if (isset($title)) echo '<div class="share-title">' . $title . '</div>';
+				if (isset($share->content->description)) echo wpautop($share->content->description);
+				echo '</div>';
+			}
+			
+			echo '</div>';
 		}
 	?></div><?php
 }
