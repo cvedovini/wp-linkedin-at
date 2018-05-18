@@ -22,8 +22,10 @@ if (isset($update->updateContent->companyStatusUpdate)) {
 		if (isset($share->comment)) echo wpautop(find_links($share->comment));
 
 		if (isset($share->content)) {
+			unset($title);
+			unset($thumbnail);
 			echo '<div class="share-content">';
-				
+			
 			if (isset($share->content->title)) $title = $share->content->title;
 			
 			if (isset($title) || isset($share->content->description)) {
